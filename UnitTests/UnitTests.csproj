@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LeetCode-14-LongestCommonPrefix\LeetCode-14-LongestCommonPrefix.csproj" />
+  </ItemGroup>
+
 </Project>
