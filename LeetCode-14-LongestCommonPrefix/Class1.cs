@@ -1,4 +1,6 @@
-﻿namespace LeetCode_14_LongestCommonPrefix
+﻿using System.Text.RegularExpressions;
+
+namespace LeetCode_14_LongestCommonPrefix
 {
     public class Class1
     {
@@ -13,18 +15,41 @@
             // Output: "fl"
 
             // Check validation constraints
-            CheckConstraints();
+            CheckConstraints(strs);
 
             throw new NotImplementedException();
         }
 
-        private void CheckConstraints()
+        private void CheckConstraints(string[] strs)
         {
             // Constraints:
-
+            //
             // 1 <= strs.length <= 200
             // 0 <= strs[i].length <= 200
             // strs[i] consists of only lowercase English letters.
+
+
+            // Make sure the string array doesn't contain too many or too few strings
+            if ((strs.Length < 1) || (strs.Length > 200))
+            {
+                throw new ConstraintViolationException();
+            }
+
+            foreach (string str in strs)
+            {
+                // Make sure each string is the proper length
+                if (str.Length > 200)
+                {
+                    throw new ConstraintViolationException();
+                }
+
+                // Use a RegEx to make sure the given string only contains lowercase English letters
+                Regex regex = new Regex(@"^[a-z]+$");
+                if (!regex.IsMatch(str))
+                {
+                    throw new ConstraintViolationException();
+                }
+            }
         }
     }
 
