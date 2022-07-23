@@ -17,7 +17,35 @@ namespace LeetCode_14_LongestCommonPrefix
             // Check validation constraints
             CheckConstraints(strs);
 
-            throw new NotImplementedException();
+            // Now that all input data is within bounds, look for the longest common prefix.
+
+            string commonPrefix = strs[0];
+
+            foreach (string str in strs)
+            {
+                string newCommonPrefix = "";
+
+                for (int i = 0; i < str.Length && i < commonPrefix.Length; i++)
+                {
+                    if (str[i] == commonPrefix[i])
+                    {
+                        newCommonPrefix += str[i];
+                    }
+                    else
+                    {
+                        commonPrefix = newCommonPrefix;
+                        break;
+                    }
+                }
+                commonPrefix = newCommonPrefix;
+
+                if (commonPrefix == "")
+                {
+                    return commonPrefix;
+                }
+            }
+
+            return commonPrefix;
         }
 
         private void CheckConstraints(string[] strs)
